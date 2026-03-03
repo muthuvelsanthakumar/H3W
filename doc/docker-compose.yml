@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: h3w_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      # Mount the SQLite file specifically if you want it to persist properly
+      # - ./backend/h3w_platform.db:/app/h3w_platform.db
+
+      # db: # Postgres service commented out as SQLite is currently used
+      #   image: postgres:15
+      #   restart: always
+      #   volumes:
+      #     - postgres_data:/var/lib/postgresql/data
+      #   environment:
+      #     - POSTGRES_USER=postgres
+      #     - POSTGRES_PASSWORD=postgres
+      #     - POSTGRES_DB=app
+      #   ports:
+      #     - "5432:5432"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: h3w_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+# volumes:
+#   postgres_data:
