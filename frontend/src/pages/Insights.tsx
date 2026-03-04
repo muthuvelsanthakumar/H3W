@@ -191,8 +191,8 @@ export default function Insights() {
             </AnimatePresence>
 
             {isError && (
-                <div className="bg-rose-50 p-4 rounded-2x flex items-center text-rose-600 font-semibold border border-rose-100 italic">
-                    Failed to fetch intelligence reports. Ensure database is synchronized.
+                <div className="bg-rose-50 p-4 rounded-2x flex items-center text-rose-600 font-bold border border-rose-100">
+                    Intelligence Scan Interrupted: Failed to fetch reports. Please re-authenticate or check data sync status.
                 </div>
             )}
 

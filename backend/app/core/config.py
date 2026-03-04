@@ -23,12 +23,17 @@ class Settings(BaseSettings):
     
     model_config = SettingsConfigDict(
         case_sensitive=True, 
-        env_file=".env",
-        extra="ignore" # This will prevent the error with extra fields in .env
+        env_file=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env"),
+        extra="ignore"
     )
 
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> str:
-        return self.DATABASE_URL
+        if self.DATABASE_URL and self.DATABASE_URL.startswith("sqlite:///./"):
+            # Resolve relative sqlite path to absolute path based on backend directory
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            db_name = self.DATABASE_URL.replace("sqlite:///./", "")
+            return f"sqlite:///{os.path.join(base_dir, db_name)}"
+        return self.DATABASE_URL or "sqlite:///./h3w_platform.db"
 
 settings = Settings()

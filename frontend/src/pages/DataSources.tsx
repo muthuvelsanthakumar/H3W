@@ -69,7 +69,7 @@ export default function DataSources() {
             {isError && (
                 <div className="bg-rose-50 border border-rose-100 p-4 rounded-2xl text-rose-600 text-sm font-semibold flex items-center">
                     <AlertCircle className="h-4 w-4 mr-2" />
-                    Operational Error: Failed to fetch live data streams. Check database connectivity.
+                    Operational Error: Failed to synchronization with the Data Engine. Please check your session or backend status.
                 </div>
             )}
 
