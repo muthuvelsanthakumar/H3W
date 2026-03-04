@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
 import { Zap, Loader2, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -7,13 +8,21 @@ export default function Login() {
     const [email, setEmail] = useState('admin@h3w.com');
     const [password, setPassword] = useState('admin123');
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/');
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         try {
             await login(email, password);
+            navigate('/');
         } catch (err) {
             alert('Login failed. Check backend/database connection.');
         } finally {
