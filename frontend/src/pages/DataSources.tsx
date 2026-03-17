@@ -24,7 +24,7 @@ export default function DataSources() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
-            if (file.size > 10 * 1024 * 1024) return alert("File too large (>10MB)");
+            if (file.size > 15 * 1024 * 1024) return alert("File too large (>15MB)");
             upload(file);
         }
     };

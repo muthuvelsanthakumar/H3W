@@ -27,10 +27,10 @@ async def upload_data(
     if not file.filename.endswith(('.csv', '.xlsx')):
         raise HTTPException(status_code=400, detail="Only CSV and Excel files are supported.")
     
-    MAX_FILE_SIZE = 10 * 1024 * 1024 # 10MB
+    MAX_FILE_SIZE = 15 * 1024 * 1024 # 15MB
     contents = await file.read()
     if len(contents) > MAX_FILE_SIZE:
-        raise HTTPException(status_code=400, detail="File too large. Maximum size is 10MB.")
+        raise HTTPException(status_code=400, detail="File too large. Maximum size is 15MB.")
     if len(contents) == 0:
         raise HTTPException(status_code=400, detail="The uploaded file is empty.")
     try:
