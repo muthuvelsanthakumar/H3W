@@ -35,11 +35,15 @@ async def upload_data(
         raise HTTPException(status_code=400, detail="The uploaded file is empty.")
     try:
         if file.filename.endswith('.csv'):
-            df = pd.read_csv(io.BytesIO(contents))
+            try:
+                df = pd.read_csv(io.BytesIO(contents))
+            except UnicodeDecodeError:
+                # Fallback for Windows-encoded CSVs (like Superstore)
+                df = pd.read_csv(io.BytesIO(contents), encoding='windows-1252')
         else:
             df = pd.read_excel(io.BytesIO(contents))
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Error parsing file: {str(e)}")
+        raise HTTPException(status_code=400, detail=f"Error parsing file: {str(e)}\n\n(Hint: Ensure your file is a valid CSV or Excel document)")
 
     # 1. Assess Data Quality
     quality_report = DataQualityService.assess_quality(df)
