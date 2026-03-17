@@ -1,7 +1,7 @@
 import {
     Info, CheckCircle, ExternalLink, Sparkles, Filter,
     MoreVertical, ShieldCheck, Loader2, Trash2, TrendingUp,
-    BarChart2, PieChart as PieIcon
+    BarChart2, PieChart as PieIcon, Target
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
@@ -259,10 +259,32 @@ export default function Insights() {
                                         <Info className="h-5 w-5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] font-bold text-indigo-400 uppercase mb-1">AI Reasoning Engine</p>
+                                        <p className="text-[10px] font-bold text-indigo-400 uppercase mb-1">Diagnostic Root Cause</p>
                                         <p className="text-xs font-semibold text-indigo-700 leading-relaxed">{insight.ai_root_cause}</p>
                                     </div>
                                 </div>
+                                {insight.predictive_outlook && (
+                                    <div className="flex items-start space-x-4 p-5 bg-amber-50/50 rounded-2xl border border-amber-100/50">
+                                        <div className="p-2 bg-white rounded-lg shadow-sm">
+                                            <TrendingUp className="h-5 w-5 text-amber-500" />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] font-bold text-amber-500 uppercase mb-1">Predictive Outlook</p>
+                                            <p className="text-xs font-semibold text-amber-700 leading-relaxed">{insight.predictive_outlook}</p>
+                                        </div>
+                                    </div>
+                                )}
+                                {insight.prescriptive_action && (
+                                    <div className="flex items-start space-x-4 p-5 bg-emerald-50/50 rounded-2xl border border-emerald-100/50">
+                                        <div className="p-2 bg-white rounded-lg shadow-sm">
+                                            <Target className="h-5 w-5 text-emerald-500" />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] font-bold text-emerald-500 uppercase mb-1">Prescriptive Plan</p>
+                                            <p className="text-xs font-semibold text-emerald-700 leading-relaxed">{insight.prescriptive_action}</p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
 

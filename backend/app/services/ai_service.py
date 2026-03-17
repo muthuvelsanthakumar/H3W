@@ -91,6 +91,8 @@ class AIService:
         - confidence_score: Number between 80 and 99
         - category: One of 'Growth', 'Operations', 'Finance', 'Efficiency'
         - ai_root_cause: detailed reasoning. For positive items, explain the driver. For negative, explain the leak.
+        - predictive_outlook: 1-2 sentences on what will happen if this trend continues.
+        - prescriptive_action: 1-2 actionable, strategic steps to prevent negative outcomes or capitalize on positive ones.
         - visualization_data: A list of 2 chart objects.
             - type: 'area', 'bar', or 'pie'
             - title: Analysis title
@@ -165,6 +167,8 @@ class AIService:
                     "confidence_score": 94.5,
                     "category": "Operations",
                     "ai_root_cause": "Preliminary signals suggest procedural delays in vital sign logging across late-night shifts.",
+                    "predictive_outlook": "If unaddressed, prolonged nocturnal fluctuations might lead to delayed critical care responses.",
+                    "prescriptive_action": "Implement automated threshold alerts for ICU beds and mandate dual-signoff on 00:00 - 04:00 interventions.",
                     "visualization_data": [{
                         "type": "area",
                         "title": "Vital Sign Variance",
@@ -181,6 +185,8 @@ class AIService:
                     "confidence_score": 88.0,
                     "category": "Finance",
                     "ai_root_cause": "Increased competitive bidding on core keywords leading to inflated acquisition costs.",
+                    "predictive_outlook": "Search channel ROI will plateau, dragging down overall blended marketing efficiency within 60 days.",
+                    "prescriptive_action": "Reallocate 20% of the generic search budget into high-performing long-tail search and direct social campaigns.",
                     "visualization_data": [{
                         "type": "bar",
                         "title": "Channel ROI Comparison",
@@ -197,6 +203,8 @@ class AIService:
                     "confidence_score": 82.0,
                     "category": "Efficiency",
                     "ai_root_cause": "Data distribution analysis indicates high density in specific segments, suggesting potential for targeted optimization.",
+                    "predictive_outlook": "Resource overallocation in high-density segments will result in under-serving emerging, potentially profitable clusters.",
+                    "prescriptive_action": "Deploy dynamic tiering logic to automatically redistribute operational bandwidth based on real-time segment density.",
                     "visualization_data": [{
                         "type": "pie",
                         "title": "Data Distribution",

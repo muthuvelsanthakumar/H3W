@@ -11,6 +11,8 @@ export interface Insight {
     category: string;
     status: string;
     visualization_data?: any[];
+    predictive_outlook?: string;
+    prescriptive_action?: string;
 }
 
 export const insightService = {

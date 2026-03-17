@@ -10,6 +10,8 @@ class InsightBase(BaseModel):
     category: Optional[str] = "Operations"
     status: Optional[str] = "active"
     ai_root_cause: Optional[str] = None
+    predictive_outlook: Optional[str] = None
+    prescriptive_action: Optional[str] = None
     visualization_data: Optional[Any] = None
 
 class InsightCreate(InsightBase):
