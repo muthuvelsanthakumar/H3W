@@ -11,6 +11,8 @@ class Insight(Base):
     confidence_score = Column(Float)
     evidence = Column(JSON, nullable=True)
     ai_root_cause = Column(String, nullable=True)
+    predictive_outlook = Column(String, nullable=True)
+    prescriptive_action = Column(String, nullable=True)
     category = Column(String, default="Operations")
     status = Column(String, default="active") # active, dismissed, resolved
     visualization_data = Column(JSON, nullable=True) # Data for charts
